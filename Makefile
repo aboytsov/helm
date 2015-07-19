@@ -23,7 +23,7 @@
 ## Floor, Boston, MA 02110-1301, USA.
 
 # Emacs invocation
-EMACS_COMMAND   := emacs
+EMACS_COMMAND   := /Applications/Emacs.app/Contents/MacOS/Emacs-x86_64-10_9
 
 EMACS		:= $(EMACS_COMMAND) -Q -batch
 

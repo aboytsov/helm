@@ -633,7 +633,7 @@ If N is positive go forward otherwise go backward."
 
 (defun helm-grep-save-results-1 ()
   "Save helm grep result in a `helm-grep-mode' buffer."
-  (let ((buf "*hgrep*")
+  (let ((buf "*grep*")
         new-buf)
     (when (get-buffer buf)
       (setq new-buf (helm-read-string "GrepBufferName: " buf))
