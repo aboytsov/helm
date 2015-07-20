@@ -834,7 +834,7 @@ Visible marks store candidate. Some actions uses marked candidates.
 \\[helm-follow-action-backward] : Run persistent action and goto previous line.
 \\[helm-force-update] : Recalculate and redisplay candidates.
 \\[helm-toggle-suspend-update] : Suspend/reenable update.
- 
+
 ** Global Commands
 
 \\<global-map>\\[helm-resume] revives last `helm' session.
@@ -2126,6 +2126,9 @@ window or frame configuration is saved/restored according to values of
             (below (or (helm-window-in-direction 'below)
                        (helm-window-in-direction 'right)
                        (selected-window)))
+            (vertical (or (helm-window-in-direction 'below)
+                          (helm-window-in-direction 'above)
+                          (other-window-for-scrolling)))
             (same  (selected-window))
             (other (other-window-for-scrolling))
             (t     (or (window-next-sibling) (selected-window)))))
@@ -3723,7 +3726,7 @@ Possible value of DIRECTION are 'next or 'previous."
 
 (defun helm--set-header-line (&optional update)
   (with-selected-window (minibuffer-window)
-    (let* ((beg  (save-excursion (vertical-motion 0) (point))) 
+    (let* ((beg  (save-excursion (vertical-motion 0) (point)))
            (end  (save-excursion (end-of-visual-line) (point)))
            ;; The visual line where the cursor is.
            (cont (buffer-substring beg end))
@@ -4381,7 +4384,7 @@ e.g:
                    'global '(foo foa fob bar baz))))
 
 A shortcut can be used to simplify:
-          
+
      (helm-build-in-buffer-source \"test\"
        :data '(foo foa fob bar baz))
 

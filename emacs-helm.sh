@@ -26,7 +26,7 @@
 [ -z $TEMP ] && declare TEMP="/tmp"
 
 CONF_FILE="$TEMP/helm-cfg.el"
-EMACS=emacs
+EMACS=/Applications/Emacs.app/Contents/MacOS/Emacs-x86_64-10_9
 
 case $1 in
     -P)

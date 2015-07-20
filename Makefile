@@ -31,33 +31,9 @@ EVAL := $(EMACS) --eval
 
 PKGDIR := .
 
-# Additional emacs loadpath
-LOADPATH	:= -L .
+.PHONY: autoloads
 
-# Files to compile
-EL			:= $(sort $(wildcard helm*.el))
-
-# Compiled files
-ELC			:= $(EL:.el=.elc)
-
-
-.PHONY: clean autoloads batch-compile
-
-all: clean autoloads batch-compile
-
-$(ELC): %.elc: %.el
-	$(EMACS) $(LOADPATH) -f batch-byte-compile $<
-
-# Compile needed files
-compile: $(ELC)
-
-# Compile all files at once
-batch-compile:
-	$(EMACS) $(LOADPATH) -f batch-byte-compile $(EL)
-
-# Remove all generated files
-clean:
-	rm -f $(ELC)
+all: autoloads
 
 # Make autoloads file
 autoloads:

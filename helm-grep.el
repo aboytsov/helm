@@ -654,7 +654,7 @@ If N is positive go forward otherwise go backward."
           (insert (with-current-buffer helm-buffer
                     (goto-char (point-min)) (forward-line 1)
                     (buffer-substring (point) (point-max))))))
-      (helm-grep-mode) (pop-to-buffer buf))
+      (grep-mode) (pop-to-buffer buf))
     (message "Helm Grep Results saved in `%s' buffer" buf)))
 
 ;;;###autoload
@@ -1020,7 +1020,7 @@ in recurse, and ignoring EXTS, search being made on
                                (> (- (setq end (match-end 0))
                                      (setq beg (match-beginning 0))) 0))
                      (add-text-properties beg end '(face helm-grep-match)))
-                   do (goto-char (point-min))) 
+                   do (goto-char (point-min)))
           (buffer-string))
       (error nil))))
 
